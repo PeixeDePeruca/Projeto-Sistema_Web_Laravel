@@ -8,6 +8,13 @@
 <body>
     <h1>Quartos Cadastrados</h1>
 
+    @if (session('success'))
+    <div style="background-color: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+        {{ session('success') }}
+    </div>
+    @endif
+
+
     <a href="{{ route('quartos.create') }}">Cadastrar Novo Quarto</a>
 
     <br><br>

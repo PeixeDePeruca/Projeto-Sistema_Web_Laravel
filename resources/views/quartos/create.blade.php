@@ -18,6 +18,16 @@
 </head>
 <body>
     <h1>Cadastrar Novo Quarto</h1>
+    @if ($errors->any())
+    <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
 
     <form action="{{ route('quartos.store') }}" method="POST">
         @csrf

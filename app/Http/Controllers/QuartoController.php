@@ -38,7 +38,7 @@ class QuartoController extends Controller
 
         Quarto::create($request->all());
 
-        return redirect()->route('quartos.index');
+        return redirect()->route('quartos.index')->with('success', 'Quarto cadastrado com sucesso!');
     }
 
     /**
@@ -71,7 +71,7 @@ class QuartoController extends Controller
 
         $quarto->update($request->all());
 
-        return redirect()->route('quartos.index');
+        return redirect()->route('quartos.index')->with('success', 'Quarto atualizado com sucesso!');
     }
 
     /**
@@ -81,6 +81,6 @@ class QuartoController extends Controller
     {
         $quarto->delete();
 
-        return redirect()->route('quartos.index');
+        return redirect()->route('quartos.index')->with('success', 'Quarto removido com sucesso!');
     }
 }
