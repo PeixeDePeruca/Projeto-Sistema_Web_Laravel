@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Quarto;
+use App\Http\Requests\QuartoRequest;
 use Illuminate\Http\Request;
 
 class QuartoController extends Controller
@@ -27,16 +28,9 @@ class QuartoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(QuartoRequest $request)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'nivel_blindagem' => 'required|string|max:255',
-            'capacidade' => 'required|integer',
-            'preco_diaria' => 'required|numeric',
-        ]);
-
-        Quarto::create($request->all());
+        Quarto::create($request->validated());
 
         return redirect()->route('quartos.index')->with('success', 'Quarto cadastrado com sucesso!');
     }
@@ -60,16 +54,9 @@ class QuartoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Quarto $quarto)
+    public function update(QuartoRequest $request, Quarto $quarto)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'nivel_blindagem' => 'required|string|max:255',
-            'capacidade' => 'required|integer',
-            'preco_diaria' => 'required|numeric',
-        ]);
-
-        $quarto->update($request->all());
+        $quarto->update($request->validated());
 
         return redirect()->route('quartos.index')->with('success', 'Quarto atualizado com sucesso!');
     }
