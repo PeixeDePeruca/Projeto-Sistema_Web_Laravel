@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Quartos - Hotel Lobisomem</title>
-</head>
-<body>
-    <h1>Quartos Cadastrados</h1>
+@extends('layout')
 
-    @if (session('success'))
-    <div style="background-color: #d4edda; color: #155724; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
-        {{ session('success') }}
-    </div>
-    @endif
+@section('title', 'Lista de Quartos - Hotel Lobisomem')
 
+@section('content')
+    <h2>Quartos Cadastrados</h2>
 
     <a href="{{ route('quartos.create') }}">Cadastrar Novo Quarto</a>
-
     <br><br>
+
+
+
 
     <table border="1" cellpadding="8" cellspacing="0">
         <thead>
@@ -26,21 +18,25 @@
                 <th>Nome</th>
                 <th>Nível de Blindagem do Quarto</th>
                 <th>Capacidade</th>
-                <th>Preço Diária (R$)</th>
+                <th>Preço da Diária (R$)</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
+
+
+
             @forelse ($quartos as $quarto)
                 <tr>
                     <td>{{ $quarto->id }}</td>
                     <td>{{ $quarto->nome }}</td>
                     <td>{{ $quarto->nivel_blindagem }}</td>
-                    <td>{{ $quarto->capacidade }} pessoa(s)</td>
+                    <td>{{ $quarto->capacidade }}</td>
                     <td>R$ {{ number_format($quarto->preco_diaria, 2, ',', '.') }}</td>
                     <td>
-                        <a href="{{ route('quartos.edit', $quarto->id) }}">Editar</a>
 
+                        <a href="{{ route('quartos.show', $quarto->id) }}">Ver</a> |
+                        <a href="{{ route('quartos.edit', $quarto->id) }}">Editar</a> |
                         <form action="{{ route('quartos.destroy', $quarto->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
@@ -49,11 +45,11 @@
                     </td>
                 </tr>
             @empty
+
                 <tr>
-                    <td colspan="6">Nenhum quarto cadastrado até o momento.</td>
+                    <td colspan="6">Nenhum quarto cadastrado.</td>
                 </tr>
             @endforelse
         </tbody>
     </table>
-</body>
-</html>
+@endsection
