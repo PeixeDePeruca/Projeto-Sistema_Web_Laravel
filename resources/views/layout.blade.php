@@ -71,6 +71,7 @@
         <nav>
             <a href="{{ route('quartos.index') }}">Quartos</a>
             <a href="{{ route('hospedes.index') }}">Hóspedes</a>
+            <a href="{{ route('reservas.index') }}">Reservas</a>
         </nav>
     </header>
 
