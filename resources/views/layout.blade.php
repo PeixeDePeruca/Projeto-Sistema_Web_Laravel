@@ -54,13 +54,36 @@
             border-radius: 5px;
             margin-bottom: 15px;
         }
+        .alert-danger ul {
+            margin: 0;
+            padding-left: 20px;
+        }
         .form-group {
             margin-bottom: 15px;
         }
-        input[type="text"], input[type="number"] {
+        input[type="text"], 
+        input[type="number"], 
+        input[type="date"], 
+        select {
             width: 320px;
             padding: 6px;
-            box-sizing: border-border-box;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #2c3e50;
+            color: white;
         }
     </style>
 </head>
