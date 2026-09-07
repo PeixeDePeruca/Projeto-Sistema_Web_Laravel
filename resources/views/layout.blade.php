@@ -70,7 +70,7 @@
         <h1>Hotel Lobisomem 🌕</h1>
         <nav>
             <a href="{{ route('quartos.index') }}">Quartos</a>
-            <!--coisas serão add aqui futuramente-->
+            <a href="{{ route('hospedes.index') }}">Hóspedes</a>
         </nav>
     </header>
 
