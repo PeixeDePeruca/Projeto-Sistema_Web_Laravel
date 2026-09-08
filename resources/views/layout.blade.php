@@ -8,22 +8,30 @@
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            background-color: #f4f4f9;
+            background: url('/images/Moon_water.jfif') no-repeat center center fixed;
+            background-size: cover;
             color: #333;
         }
+
+
         header {
-            background-color: #2c3e50;
+            background-color: rgba(44, 62, 80, 0.85);
             color: #fff;
-            padding: 15px 20px;
+            padding: 10px 20px;
             border-radius: 5px;
-            margin-bottom: 20px;
+            margin: 0 auto 15px auto;
+            max-width: 900px;
         }
+
+
         header h1 {
             margin: 0;
-            font-size: 24px;
+            font-size: 20px;
         }
+
+
         nav {
-            margin-top: 10px;
+            margin-top: 8px;
         }
         nav a {
             color: #ecf0f1;
@@ -34,12 +42,18 @@
         nav a:hover {
             text-decoration: underline;
         }
+
+        /*responsavel por mudar o container branco onde fica a tabela  */
         .container {
-            background: #fff;
-            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.65);
+            padding: 15px 20px;
             border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
+
+
         .alert-success {
             background-color: #d4edda;
             color: #155724;
@@ -47,6 +61,8 @@
             border-radius: 5px;
             margin-bottom: 15px;
         }
+
+
         .alert-danger {
             background-color: #f8d7da;
             color: #721c24;
@@ -54,10 +70,14 @@
             border-radius: 5px;
             margin-bottom: 15px;
         }
+
+
         .alert-danger ul {
             margin: 0;
             padding-left: 20px;
         }
+
+
         .form-group {
             margin-bottom: 15px;
         }
