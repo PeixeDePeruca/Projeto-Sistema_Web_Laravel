@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Quarto;
 use App\Http\Requests\QuartoRequest;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class QuartoController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */
@@ -66,6 +69,8 @@ class QuartoController extends Controller
      */
     public function destroy(Quarto $quarto)
     {
+        $this->authorize('delete', $quarto);
+
         $quarto->delete();
 
         return redirect()->route('quartos.index')->with('success', 'Quarto removido com sucesso!');
