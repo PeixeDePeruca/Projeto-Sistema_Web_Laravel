@@ -30,17 +30,17 @@ class HotelSeeder extends Seeder
         //povoamento da tabela Hóspedes
         Hospede::create([
             'nome' => 'Tony Ramos',
-            'cpf' => '12345678900',
-            'telefone' => '42999999999',
-            'email' => 'tony.ramos@email.com',
+            'cpf' => '11018869999',
+            'telefone' => '429599499',
+            'tipo_transformacao' => 'Lobisomem Completo',
         ]);
 
 
         Hospede::create([
             'nome' => 'Remus Lupin',
-            'cpf' => '98765432100',
-            'telefone' => '42988888888',
-            'email' => 'lupin@hogwarts.edu',
+            'cpf' => '00035744101',
+            'telefone' => '429886668',
+            'tipo_transformacao' => 'Metamorfo',
         ]);
 
 
