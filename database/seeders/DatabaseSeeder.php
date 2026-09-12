@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -11,8 +10,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             HotelSeeder::class,
+            UserRoleSeeder::class,
         ]);
-
-
     }
 }
