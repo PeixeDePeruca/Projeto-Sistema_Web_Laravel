@@ -16,8 +16,9 @@ Sistema web de gerenciamento de hotel, desenvolvido em Laravel como projeto fina
   * Relacionamento (Quarto ↔ Reserva ↔ Hóspede)
   * Autenticação com Laravel Breeze
   * Campo `role` na tabela users (admin, funcionário, hóspede)
-  * Middleware de controle de acesso (CheckRole)
+  * Middleware de controle de acesso (`CheckAdmin`, `QuartoPolicy`, travas em Controllers)
   * Policy de autorização (QuartoPolicy)
+  * Painel Administrativo com métricas dinâmicas e proteção de views
   * README
 
 ## Descrição
@@ -67,10 +68,13 @@ Acesse em: http://127.0.0.1:8000
 
 ## Funcionalidades
 
-* CRUD completo de Quartos, Hóspedes e Reservas
-* Relacionamento entre Quartos, Reservas e Hóspedes
-* Autenticação com Laravel Breeze
-* Controle de acesso por perfil de usuário (role)
-* Middleware de proteção de rotas (`/admin`)
-* Policy de autorização em ações de Quarto (exclusão restrita a admin)
-* Validação de formulários com Form Requests
+CRUD completo de Quartos, Hóspedes e Reservas
+Painel Administrativo (/admin) com indicadores em tempo real
+Autenticação completa via Laravel Breeze
+Controle de acesso por perfil (role):
+Hóspede: visualização e criação de reservas próprias (sem permissão para editar/excluir)
+Funcionário: gestão operacional do hotel
+Admin: acesso total e painel de métricas
+Middleware de proteção de rotas e verificação de permissões direto nos Controllers (403 Forbidden)
+Páginas de erro personalizadas (403 e 404)
+Form Requests para validação de dados de entrada

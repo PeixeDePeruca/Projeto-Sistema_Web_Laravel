@@ -11,6 +11,10 @@
     <p><strong>Data de Saída:</strong> {{ $reserva->data_saida }}</p>
     <p><strong>Valor Total:</strong> R$ {{ number_format($reserva->valor_total, 2, ',', '.') }}</p>
 
-    <a href="{{ route('reservas.edit', $reserva->id) }}">Editar</a> |
+    <p>
+    @if(auth()->user()->role !== 'hospede')
+        <a href="{{ route('reservas.edit', $reserva->id) }}">Editar</a> |
+    @endif
     <a href="{{ route('reservas.index') }}">Voltar</a>
+</p>
 @endsection

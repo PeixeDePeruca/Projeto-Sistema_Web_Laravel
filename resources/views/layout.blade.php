@@ -110,12 +110,29 @@
 <body>
 
     <header>
-        <h1>Hotel Lobisomem 🌕</h1>
+        <h1>
+            <a href="{{ auth()->check() ? route('dashboard') : url('/') }}" style="color:#fff; text-decoration:none;">
+                Hotel Lobisomem
+            </a>
+        </h1>
         <nav>
-            <a href="{{ route('quartos.index') }}">Quartos</a>
-            <a href="{{ route('hospedes.index') }}">Hóspedes</a>
-            <a href="{{ route('reservas.index') }}">Reservas</a>
-        </nav>
+    <a href="{{ route('quartos.index') }}">Quartos</a>
+    <a href="{{ route('hospedes.index') }}">Hóspedes</a>
+    <a href="{{ route('reservas.index') }}">Reservas</a>
+
+    {{-- Link visível apenas para Administradores --}}
+    @can('admin')
+        <a href="{{ url('/admin') }}">
+            Painel Admin
+        </a>
+    @endcan
+
+    <!-- Botão de Sair existente -->
+    <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+        @csrf
+        <button type="submit">Sair</button>
+    </form>
+</nav>
     </header>
 
     <div class="container">

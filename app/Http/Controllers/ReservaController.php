@@ -61,6 +61,10 @@ class ReservaController extends Controller
 
     public function edit(Reserva $reserva)
     {
+        if (auth()->user()->role === 'hospede') {
+            abort(403, 'Ação não autorizada para hóspedes.');
+        }
+
         $quartos = Quarto::all();
         $hospedes = Hospede::all();
         return view('reservas.edit', compact('reserva', 'quartos', 'hospedes'));
@@ -68,6 +72,11 @@ class ReservaController extends Controller
 
     public function update(Request $request, Reserva $reserva)
     {
+        // Bloqueia se for hóspede
+        if (auth()->user()->role === 'hospede') {
+            abort(403, 'Ação não autorizada para hóspedes.');
+        }
+
         $request->validate([
             'quarto_id' => 'required|exists:quartos,id',
             'hospede_id' => 'required|exists:hospedes,id',
@@ -99,6 +108,10 @@ class ReservaController extends Controller
 
     public function destroy(Reserva $reserva)
     {
+        if (auth()->user()->role === 'hospede') {
+            abort(403, 'Ação não autorizada para hóspedes.');
+        }
+
         $reserva->delete();
 
         return redirect()->route('reservas.index')->with('success', 'Reserva cancelada com sucesso!');

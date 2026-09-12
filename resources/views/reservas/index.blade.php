@@ -30,13 +30,17 @@
                     <td>{{ $reserva->data_saida }}</td>
                     <td>R$ {{ number_format($reserva->valor_total, 2, ',', '.') }}</td>
                     <td>
-                        <a href="{{ route('reservas.show', $reserva->id) }}">Ver</a> |
-                        <a href="{{ route('reservas.edit', $reserva->id) }}">Editar</a> |
-                        <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST" style="display:inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" onclick="return confirm('Tem certeza?')">Cancelar</button>
-                        </form>
+                        <a href="{{ route('reservas.show', $reserva->id) }}">Ver</a>
+
+                        {{-- Esconde Editar e Cancelar para a role 'hospede' --}}
+                        @if(auth()->user()->role !== 'hospede')
+                            | <a href="{{ route('reservas.edit', $reserva->id) }}">Editar</a> |
+                            <form action="{{ route('reservas.destroy', $reserva->id) }}" method="POST" style="display:inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="return confirm('Tem certeza?')">Cancelar</button>
+                            </form>
+                        @endif
                     </td>
                 </tr>
             @empty
