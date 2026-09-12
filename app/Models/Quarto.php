@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Quarto extends Model
 {
     use HasFactory;
+    protected $fillable = ['nome', 'nivel_blindagem', 'capacidade', 'preco_diaria'];
 
-    protected $fillable = [
-        'nome',
-        'nivel_blindagem',
-        'capacidade',
-        'preco_diaria',
-    ];
+    public function reservas()
+    {
+        return $this->hasMany(Reserva::class);
+    }
 }

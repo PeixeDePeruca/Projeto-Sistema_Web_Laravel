@@ -23,7 +23,6 @@ class ReservaController extends Controller
         return view('reservas.create', compact('quartos', 'hospedes'));
     }
 
-    
     public function store(Request $request)
     {
         $request->validate([
@@ -34,7 +33,7 @@ class ReservaController extends Controller
         ]);
 
         $quarto = Quarto::findOrFail($request->quarto_id);
-        
+
         $entrada = Carbon::parse($request->data_entrada);
         $saida = Carbon::parse($request->data_saida);
         $dias = $entrada->diffInDays($saida);
@@ -67,8 +66,6 @@ class ReservaController extends Controller
         return view('reservas.edit', compact('reserva', 'quartos', 'hospedes'));
     }
 
-
-
     public function update(Request $request, Reserva $reserva)
     {
         $request->validate([
@@ -79,7 +76,7 @@ class ReservaController extends Controller
         ]);
 
         $quarto = Quarto::findOrFail($request->quarto_id);
-        
+
         $entrada = Carbon::parse($request->data_entrada);
         $saida = Carbon::parse($request->data_saida);
         $dias = $entrada->diffInDays($saida);
@@ -88,7 +85,6 @@ class ReservaController extends Controller
         }
 
         $valor_total = $dias * $quarto->preco_diaria;
-
 
         $reserva->update([
             'quarto_id' => $request->quarto_id,
@@ -100,8 +96,6 @@ class ReservaController extends Controller
 
         return redirect()->route('reservas.index')->with('success', 'Reserva atualizada com sucesso!');
     }
-
-
 
     public function destroy(Reserva $reserva)
     {
