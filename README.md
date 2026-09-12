@@ -66,15 +66,14 @@ Acesse em: http://127.0.0.1:8000
   E-mail: hospede@email.com
   Senha: 12345678
 
-## Funcionalidades
+Funcionalidades:
 
-CRUD completo de Quartos, Hóspedes e Reservas
-Painel Administrativo (/admin) com indicadores em tempo real
-Autenticação completa via Laravel Breeze
-Controle de acesso por perfil (role):
-Hóspede: visualização e criação de reservas próprias (sem permissão para editar/excluir)
-Funcionário: gestão operacional do hotel
-Admin: acesso total e painel de métricas
-Middleware de proteção de rotas e verificação de permissões direto nos Controllers (403 Forbidden)
-Páginas de erro personalizadas (403 e 404)
-Form Requests para validação de dados de entrada
+CRUD completo: Gestão de Quartos, Hóspedes e Reservas.
+Painel Administrativo (/admin): Indicadores e métricas do hotel em tempo real.
+Autenticação e Registro: Fluxo completo com Laravel Breeze e inserção automática de novos usuários na tabela de Hóspedes.
+Controle de Acesso por Perfil (role):
+Hóspede: Visualização e criação de reservas próprias (bloqueado para edição e exclusão).
+Funcionário: Gestão operacional diária do hotel (CRUDs).
+Admin: Acesso total ao sistema e ao painel de métricas.
+Segurança e Proteção: Verification via Middlewares e bloqueio direto nos Controllers com telas customizadas de erro (403 e 404).
+Validação de Dados: Validação consistente utilizando Form Requests e regras no backend.
